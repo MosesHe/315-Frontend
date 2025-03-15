@@ -2,6 +2,7 @@
 import MainLayout from '../components/layouts/MainLayout.vue';
 import ChartContainer from '../components/layouts/ChartContainer.vue';
 import ChartPlaceholder from '../components/charts/ChartPlaceholder.vue';
+import ScrollingSensorList from '../components/charts/ScrollingSensorList.vue';
 import UnityContainer from '../components/display/UnityContainer.vue';
 import ControlButtons from '../components/controls/ControlButtons.vue';
 import ResourcesPanel from '../components/display/ResourcesPanel.vue';
@@ -12,7 +13,7 @@ import ResourcesPanel from '../components/display/ResourcesPanel.vue';
     <!-- 左侧列内容 - 三个图表 -->
     <template #left-column>
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-one" />
+        <ScrollingSensorList />
       </ChartContainer>
       
       <ChartContainer>
