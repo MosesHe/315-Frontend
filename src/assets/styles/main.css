@@ -6,6 +6,8 @@
   --panel-background: #ffffff;
   --border-color: #e0e6ed;
   --text-color: #333333;
+  --text-color-secondary: #8c9bab;
+  --error-color: #f5222d;
   --header-height: 60px;
   --panel-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   --accent-color: #4a90e2;

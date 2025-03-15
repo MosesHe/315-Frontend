@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MainLayout from '../components/layouts/MainLayout.vue';
-import PanelComponent from '../components/layouts/PanelComponent.vue';
+import ChartContainer from '../components/layouts/ChartContainer.vue';
 import ChartPlaceholder from '../components/charts/ChartPlaceholder.vue';
 import UnityContainer from '../components/display/UnityContainer.vue';
 import ControlButtons from '../components/controls/ControlButtons.vue';
@@ -11,17 +11,17 @@ import ResourcesPanel from '../components/display/ResourcesPanel.vue';
   <MainLayout>
     <!-- 左侧列内容 - 三个图表 -->
     <template #left-column>
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-one" />
-      </PanelComponent>
+      </ChartContainer>
       
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-two" />
-      </PanelComponent>
+      </ChartContainer>
 
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-three" />
-      </PanelComponent>
+      </ChartContainer>
     </template>
     
     <!-- 中间列WebGL内容 -->
@@ -41,17 +41,17 @@ import ResourcesPanel from '../components/display/ResourcesPanel.vue';
     
     <!-- 右侧列内容 - 三个图表 -->
     <template #right-column>
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-four" />
-      </PanelComponent>
+      </ChartContainer>
       
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-five" />
-      </PanelComponent>
+      </ChartContainer>
 
-      <PanelComponent>
+      <ChartContainer>
         <ChartPlaceholder chartClass="chart-six" />
-      </PanelComponent>
+      </ChartContainer>
     </template>
   </MainLayout>
 </template>
