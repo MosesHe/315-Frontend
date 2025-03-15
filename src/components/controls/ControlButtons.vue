@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
+
+/**
+ * ControlButtons.vue - 控制按钮主组件
+ * 
+ * 该组件是应用的主控制面板，负责显示三个功能按钮
+ * 并根据用户选择显示对应的功能窗口
+ */
+
+// 导入三个功能子组件
+import SceneSwitcher from './windows/SceneSwitcher.vue';
+import ModelSelector from './windows/ModelSelector.vue';
+import AIInterface from './windows/AIInterface.vue';
 
 // 控制当前显示的浮窗
 const activeWindow = ref<string | null>(null);
@@ -14,85 +26,6 @@ const closeWindow = () => {
   activeWindow.value = null;
 };
 
-// 场景切换相关数据
-const industries = [
-  { id: 'chemical', name: '化工' },
-  { id: 'steel', name: '钢铁' },
-  { id: 'newEnergy', name: '新能源' },
-  { id: 'medicine', name: '医药' }
-];
-
-const scenes = [
-  { id: 'intelligentDecision', name: '智能决策场景' },
-  { id: 'leanManufacturing', name: '精益制造场景' },
-  { id: 'precisionService', name: '精准服务场景' }
-];
-
-// 应用选项，根据行业和场景组合生成
-const applications = {
-  chemical: {
-    intelligentDecision: [
-      { id: 'safetyRisk', name: '安全风险智能预警决策' },
-      { id: 'environmentalControl', name: '环保管控决策支持' }
-    ],
-    leanManufacturing: [
-      { id: 'placeholder1', name: '化工-精益制造场景-应用-1' },
-      { id: 'placeholder2', name: '化工-精益制造场景-应用-2' }
-    ],
-    precisionService: [
-      { id: 'placeholder1', name: '化工-精准服务场景-应用-1' },
-      { id: 'placeholder2', name: '化工-精准服务场景-应用-2' }
-    ]
-  },
-  steel: {
-    intelligentDecision: [
-      { id: 'placeholder1', name: '钢铁-智能决策场景-应用-1' },
-      { id: 'placeholder2', name: '钢铁-智能决策场景-应用-2' }
-    ],
-    leanManufacturing: [
-      { id: 'placeholder1', name: '钢铁-精益制造场景-应用-1' },
-      { id: 'placeholder2', name: '钢铁-精益制造场景-应用-2' }
-    ],
-    precisionService: [
-      { id: 'placeholder1', name: '钢铁-精准服务场景-应用-1' },
-      { id: 'placeholder2', name: '钢铁-精准服务场景-应用-2' }
-    ]
-  },
-  newEnergy: {
-    intelligentDecision: [
-      { id: 'placeholder1', name: '新能源-智能决策场景-应用-1' },
-      { id: 'placeholder2', name: '新能源-智能决策场景-应用-2' }
-    ],
-    leanManufacturing: [
-      { id: 'placeholder1', name: '新能源-精益制造场景-应用-1' },
-      { id: 'placeholder2', name: '新能源-精益制造场景-应用-2' }
-    ],
-    precisionService: [
-      { id: 'placeholder1', name: '新能源-精准服务场景-应用-1' },
-      { id: 'placeholder2', name: '新能源-精准服务场景-应用-2' }
-    ]
-  },
-  medicine: {
-    intelligentDecision: [
-      { id: 'placeholder1', name: '医药-智能决策场景-应用-1' },
-      { id: 'placeholder2', name: '医药-智能决策场景-应用-2' }
-    ],
-    leanManufacturing: [
-      { id: 'placeholder1', name: '医药-精益制造场景-应用-1' },
-      { id: 'placeholder2', name: '医药-精益制造场景-应用-2' }
-    ],
-    precisionService: [
-      { id: 'placeholder1', name: '医药-精准服务场景-应用-1' },
-      { id: 'placeholder2', name: '医药-精准服务场景-应用-2' }
-    ]
-  }
-};
-
-// 表单数据
-const selectedIndustry = ref('');
-const selectedScene = ref('');
-const selectedApplication = ref('');
-
 // 消息提示
 const message = ref('');
 const showMessage = ref(false);
@@ -106,45 +39,9 @@ const showTip = (msg: string) => {
   }, 3000);
 };
 
-// 监听行业变化
-watch(selectedIndustry, () => {
-  selectedScene.value = '';
-  selectedApplication.value = '';
-});
-
-// 监听场景变化
-watch(selectedScene, () => {
-  selectedApplication.value = '';
-});
-
-// 获取当前行业和场景下的应用列表
-const getApplications = () => {
-  if (!selectedIndustry.value || !selectedScene.value) return [];
-  return applications[selectedIndustry.value as keyof typeof applications]?.[selectedScene.value as keyof typeof applications.chemical] || [];
-};
-
-// 重置表单
-const resetForm = () => {
-  selectedIndustry.value = '';
-  selectedScene.value = '';
-  selectedApplication.value = '';
-};
-
-// 提交表单
-const submitForm = () => {
-  if (!selectedIndustry.value || !selectedScene.value || !selectedApplication.value) {
-    showTip('请完整填写表单');
-    return;
-  }
-  
-  console.log('提交表单:', {
-    行业: selectedIndustry.value,
-    场景: selectedScene.value,
-    应用: selectedApplication.value
-  });
-  
-  // 这里可以添加实际的提交逻辑
-  
+// 处理子组件的表单提交
+const handleFormSubmit = (data: any) => {
+  console.log('提交表单:', data);
   closeWindow();
 };
 </script>
@@ -154,100 +51,35 @@ const submitForm = () => {
     <button class="control-btn" @click="toggleWindow('scene')">场景切换</button>
     <button class="control-btn" @click="toggleWindow('model')">模型选择</button>
     <button class="control-btn" @click="toggleWindow('interface')">人机接口</button>
-    
+
+    <!-- 全局消息提示 -->
+    <transition name="tip">
+      <div v-if="showMessage" class="message-tip">
+        {{ message }}
+      </div>
+    </transition>
+
     <!-- 场景切换浮窗 -->
-    <transition name="fade">
-      <div v-if="activeWindow === 'scene'" class="overlay" @click="closeWindow">
-        <div class="floating-window" @click.stop>
-          <button class="close-btn" @click="closeWindow">×</button>
-          
-          <!-- 消息提示 -->
-          <transition name="tip">
-            <div v-if="showMessage" class="message-tip">
-              {{ message }}
-            </div>
-          </transition>
-          
-          <div class="window-content">
-            <!-- 场景切换内容 -->
-            <div class="scene-window">
-              <h2 class="window-title">场景切换</h2>
-              
-              <div class="form-container">
-                <!-- 行业选择 -->
-                <div class="form-group">
-                  <label class="form-label">请选择行业</label>
-                  <select v-model="selectedIndustry" class="form-select">
-                    <option value="">请选择</option>
-                    <option v-for="industry in industries" :key="industry.id" :value="industry.id">
-                      {{ industry.name }}
-                    </option>
-                  </select>
-                </div>
-                
-                <!-- 场景选择 -->
-                <div class="form-group">
-                  <label class="form-label">请选择场景</label>
-                  <select v-model="selectedScene" class="form-select" :disabled="!selectedIndustry">
-                    <option value="">请选择</option>
-                    <option v-for="scene in scenes" :key="scene.id" :value="scene.id">
-                      {{ scene.name }}
-                    </option>
-                  </select>
-                </div>
-                
-                <!-- 应用选择 -->
-                <div class="form-group">
-                  <label class="form-label">请选择应用</label>
-                  <select v-model="selectedApplication" class="form-select" :disabled="!selectedScene">
-                    <option value="">请选择</option>
-                    <option v-for="app in getApplications()" :key="app.id" :value="app.id">
-                      {{ app.name }}
-                    </option>
-                  </select>
-                </div>
-                
-                <!-- 按钮组 -->
-                <div class="button-group">
-                  <button class="submit-btn" @click="submitForm">提交</button>
-                  <button class="reset-btn" @click="resetForm">重置</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
-    
+    <SceneSwitcher 
+      v-if="activeWindow === 'scene'" 
+      @close="closeWindow" 
+      @show-tip="showTip"
+      @submit="handleFormSubmit"
+    />
+
     <!-- 模型选择浮窗 -->
-    <transition name="fade">
-      <div v-if="activeWindow === 'model'" class="overlay" @click="closeWindow">
-        <div class="floating-window" @click.stop>
-          <button class="close-btn" @click="closeWindow">×</button>
-          <div class="window-content">
-            <!-- 模型选择内容 -->
-            <div class="model-window">
-              模型选择内容区域
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
-    
+    <ModelSelector 
+      v-if="activeWindow === 'model'" 
+      @close="closeWindow" 
+      @show-tip="showTip"
+      @submit="handleFormSubmit"
+    />
+
     <!-- 人机接口浮窗 -->
-    <transition name="fade">
-      <div v-if="activeWindow === 'interface'" class="overlay" @click="closeWindow">
-        <div class="floating-window" @click.stop>
-          <button class="close-btn" @click="closeWindow">×</button>
-          <div class="window-content">
-            <!-- 人机接口内容 -->
-            <div class="interface-window">
-              人机接口内容区域
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
+    <AIInterface 
+      v-if="activeWindow === 'interface'" 
+      @close="closeWindow"
+    />
   </div>
 </template>
 
@@ -405,7 +237,21 @@ const submitForm = () => {
   margin-top: 40px;
 }
 
-.submit-btn, .reset-btn {
+/* 针对不同窗口中的按钮组应用不同的margin-top */
+.scene-window .button-group {
+  margin-top: 60px;
+}
+
+.model-window .button-group {
+  margin-top: 10px;
+}
+
+.interface-window .button-group {
+  margin-top: 30px;
+}
+
+.submit-btn,
+.reset-btn {
   min-width: 100px;
   padding: 10px 25px;
   border-radius: 20px;
@@ -435,8 +281,105 @@ const submitForm = () => {
 }
 
 /* 各个窗口特定样式 */
-.scene-window, .model-window, .interface-window {
+.scene-window,
+.model-window,
+.interface-window {
   min-height: 450px;
+}
+
+/* 特别为iframe设置高度 */
+.interface-window {
+  height: 600px;
+}
+
+/* 模型选择窗口样式 */
+.model-container {
+  display: flex;
+  min-height: 350px;
+  margin-bottom: 10px;
+}
+
+.model-sidebar {
+  flex: 0 0 220px;
+  margin-right: 30px;
+}
+
+.model-content {
+  flex: 1;
+}
+
+.model-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.model-btn {
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.model-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+.model-btn.active {
+  background-color: #2c3e50;
+  color: white;
+  border-color: #2c3e50;
+}
+
+.model-params {
+  padding: 10px;
+  min-height: 350px;
+}
+
+.param-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.param-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.param-label {
+  flex: 0 0 70px;
+  text-align: right;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.param-select {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.no-model-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #999;
+  font-size: 16px;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
 }
 
 /* 过渡动画 */
@@ -454,4 +397,4 @@ const submitForm = () => {
 .fade-leave-to .floating-window {
   transform: scale(0.95);
 }
-</style> 
+</style>
