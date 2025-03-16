@@ -1,4 +1,15 @@
 <script setup lang="ts">
+/**
+ * @description 图表占位组件
+ * 
+ * 该组件用于在图表开发过程中提供占位功能，显示"图表占位区域"文字。
+ * 包含以下功能：
+ * 1. 支持自定义CSS类名，方便样式定制
+ * 2. 支持图表展开/收起状态的响应式调整
+ * 3. 在展开状态下自动调整字体大小
+ * 4. 简洁的渐变背景和虚线边框样式
+ * 
+ */
 import { inject, computed, ref } from 'vue';
 import type { Ref } from 'vue';
 

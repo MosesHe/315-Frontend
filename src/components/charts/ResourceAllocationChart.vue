@@ -1,4 +1,16 @@
 <script setup lang="ts">
+/**
+ * @description 资源分配饼图组件
+ * 
+ * 该组件使用ECharts实现环形饼图，用于展示不同资源类型的分配情况。
+ * 包含以下功能：
+ * 1. 支持轮播展示人员、物料、电力三种不同资源的分配情况
+ * 2. 提供底部指示器，可手动切换不同资源类型
+ * 3. 支持图表展开/收起状态的响应式调整
+ * 4. 优化的tooltip显示，确保不被容器遮挡
+ * 5. 自动每5秒轮播切换资源类型
+ * 
+ */
 import { ref, onMounted, inject, computed, watch, onBeforeUnmount } from 'vue';
 import type { Ref } from 'vue';
 import * as echarts from 'echarts';

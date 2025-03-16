@@ -7,6 +7,7 @@ import UnityContainer from '../components/display/UnityContainer.vue';
 import ControlButtons from '../components/controls/ControlButtons.vue';
 import ResourcesPanel from '../components/display/ResourcesPanel.vue';
 import ResourceAllocationChart from '../components/charts/ResourceAllocationChart.vue';
+import StaffDistributionChart from '../components/charts/StaffDistributionChart.vue';
 </script>
 
 <template>
@@ -48,7 +49,7 @@ import ResourceAllocationChart from '../components/charts/ResourceAllocationChar
       </ChartContainer>
       
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-five" />
+        <StaffDistributionChart />
       </ChartContainer>
 
       <ChartContainer>
