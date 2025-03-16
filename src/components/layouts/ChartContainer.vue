@@ -60,7 +60,7 @@ const closeExpand = () => {
   background-color: var(--panel-background);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   overflow: hidden;
   box-shadow: var(--panel-shadow);
   height: calc(33.33% - 11px);
