@@ -1,4 +1,14 @@
 <script setup lang="ts">
+/**
+ * @description Unity WebGL 容器组件
+ * 
+ * 该组件负责加载和显示Unity WebGL内容，包含以下功能：
+ * 1. 加载Unity WebGL应用并显示进度条
+ * 2. 提供浏览器与Unity之间的通信接口
+ * 3. 处理Unity加载状态和错误提示
+ * 4. 管理Unity实例的生命周期
+ * 5. 响应式设计，自适应容器大小
+ */
 import { ref, onMounted, onUnmounted } from 'vue';
 
 // 定义Unity实例

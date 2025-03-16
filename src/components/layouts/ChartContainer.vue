@@ -1,4 +1,14 @@
 <script setup lang="ts">
+/**
+ * @description 图表容器组件
+ * 
+ * 该组件为图表提供统一的容器，实现以下功能：
+ * 1. 提供展开/收起功能，允许用户放大查看图表详情
+ * 2. 通过provide/inject向子组件提供展开状态
+ * 3. 在展开状态下显示覆盖层和关闭按钮
+ * 4. 自适应布局，确保图表在各种状态下正确显示
+ * 5. 美观的动画效果和统一的视觉风格
+ */
 import { ref, provide } from 'vue';
 import { ExpandOutlined, CloseOutlined } from '@ant-design/icons-vue';
 
