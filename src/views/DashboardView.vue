@@ -8,6 +8,7 @@ import ControlButtons from '../components/controls/ControlButtons.vue';
 import ResourcesPanel from '../components/display/ResourcesPanel.vue';
 import ResourceAllocationChart from '../components/charts/ResourceAllocationChart.vue';
 import StaffDistributionChart from '../components/charts/StaffDistributionChart.vue';
+import EventResponseRadarChart from '../components/charts/EventResponseRadarChart.vue';
 </script>
 
 <template>
@@ -53,7 +54,7 @@ import StaffDistributionChart from '../components/charts/StaffDistributionChart.
       </ChartContainer>
 
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-six" />
+        <EventResponseRadarChart />
       </ChartContainer>
     </template>
   </MainLayout>
