@@ -119,6 +119,7 @@ const closeExpand = () => {
   flex-direction: column;
   position: relative;
   animation: zoom-in 0.3s ease;
+  pointer-events: auto;
 }
 
 @keyframes zoom-in {

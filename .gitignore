@@ -20,10 +20,12 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
+*.sln2
 *.sw?
 
 # 环境变量文件
 .env
 .env.local
 .env.*.local
+
+docs

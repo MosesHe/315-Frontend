@@ -6,6 +6,7 @@ import ScrollingSensorList from '../components/charts/ScrollingSensorList.vue';
 import UnityContainer from '../components/display/UnityContainer.vue';
 import ControlButtons from '../components/controls/ControlButtons.vue';
 import ResourcesPanel from '../components/display/ResourcesPanel.vue';
+import ResourceAllocationChart from '../components/charts/ResourceAllocationChart.vue';
 </script>
 
 <template>
@@ -43,7 +44,7 @@ import ResourcesPanel from '../components/display/ResourcesPanel.vue';
     <!-- 右侧列内容 - 三个图表 -->
     <template #right-column>
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-four" />
+        <ResourceAllocationChart />
       </ChartContainer>
       
       <ChartContainer>
