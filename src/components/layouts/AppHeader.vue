@@ -54,6 +54,7 @@ onMounted(() => {
   letter-spacing: 1px;
   background: linear-gradient(to right, #4a90e2, #7cb3f5);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
