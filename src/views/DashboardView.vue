@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import MainLayout from '../components/layouts/MainLayout.vue';
 import ChartContainer from '../components/layouts/ChartContainer.vue';
-import ChartPlaceholder from '../components/charts/ChartPlaceholder.vue';
 import ScrollingSensorList from '../components/charts/ScrollingSensorList.vue';
 import ScrollingLogList from '../components/charts/ScrollingLogList.vue';
 import UnityContainer from '../components/display/UnityContainer.vue';

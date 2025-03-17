@@ -58,7 +58,7 @@ const handleLogin = async () => {
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h1 class="login-title">工业数据可视化平台</h1>
+      <h1 class="login-title">安全风险智能预警决策</h1>
       <Form
         layout="vertical"
         :model="formState"

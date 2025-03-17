@@ -3,7 +3,7 @@
  * @description 应用头部组件
  * 
  * 该组件显示应用的顶部标题栏，包含以下功能：
- * 1. 显示应用名称"工业数据可视化平台"
+ * 1. 显示应用名称"安全风险智能预警决策"
  * 2. 实时显示当前系统时间，每秒更新一次
  * 3. 渐变色标题文本，增强视觉效果
  * 4. 响应式布局设计
@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <header class="app-header">
     <div class="logo">
-      <span class="logo-text">工业数据可视化平台</span>
+      <span class="logo-text">安全风险智能预警决策</span>
     </div>
     <div class="header-right">
       <span class="time">{{ currentTime }}</span>
