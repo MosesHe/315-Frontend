@@ -4,10 +4,9 @@
  * 
  * 该组件负责加载和显示Unity WebGL内容，包含以下功能：
  * 1. 加载Unity WebGL应用并显示进度条
- * 2. 提供浏览器与Unity之间的通信接口
- * 3. 处理Unity加载状态和错误提示
- * 4. 管理Unity实例的生命周期
- * 5. 响应式设计，自适应容器大小
+ * 2. 处理Unity加载状态和错误提示
+ * 3. 管理Unity实例的生命周期
+ * 4. 响应式设计，自适应容器大小
  */
 import { ref, onMounted, onUnmounted } from 'vue';
 
@@ -20,7 +19,6 @@ const loadingProgress = ref(0);
 (window as any).MyGameInstance = null;
 
 // Unity容器元素引用
-const unityContainer = ref<HTMLDivElement | null>(null);
 const unityCanvas = ref<HTMLCanvasElement | null>(null);
 const progressBarFull = ref<HTMLDivElement | null>(null);
 
@@ -31,7 +29,7 @@ const unityConfig = {
   codeUrl: "/unity/Release/Build/Release.wasm",
   streamingAssetsUrl: "/unity/Release/StreamingAssets",
   companyName: "ISSC",
-  productName: "AntiDisturb",
+  productName: "DataDisplay",
   productVersion: "0.1.0",
 };
 
@@ -77,24 +75,10 @@ onUnmounted(() => {
     unityInstance.value.Quit();
   }
 });
-
-// 向Unity发送消息的方法
-const sendMessage = (gameObject: string, method: string, param: any = '') => {
-  if ((window as any).MyGameInstance) {
-    (window as any).MyGameInstance.SendMessage(gameObject, method, param);
-  } else {
-    console.warn("Unity实例未初始化，无法发送消息");
-  }
-};
-
-// 暴露方法供父组件调用
-defineExpose({
-  sendMessage
-});
 </script>
 
 <template>
-  <div class="unity-content" ref="unityContainer">
+  <div class="unity-content">
     <!-- Unity画布 -->
     <canvas 
       ref="unityCanvas" 

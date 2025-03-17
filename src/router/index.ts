@@ -27,7 +27,7 @@ const router = createRouter({
 });
 
 // 全局导航守卫，检查登录状态
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const isLoggedIn = AuthService.isLoggedIn();
   
   // 如果路由需要认证且用户未登录，重定向到登录页面
