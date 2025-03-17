@@ -10,7 +10,6 @@ import router from './router'
 import 'ant-design-vue/dist/reset.css'
 // 导入全局样式
 import './assets/styles/main.css'
-import './style.css'
 
 const app = createApp(App)
 

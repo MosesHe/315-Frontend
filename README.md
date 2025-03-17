@@ -80,32 +80,19 @@
 
 ### 快速开始
 
-#### 环境配置
+#### 开发与构建
 ```bash
-# 克隆仓库
-git clone [仓库地址]
-
-# 进入项目目录
-cd [项目目录]
+# 配置环境变量 编辑.env文件，设置用户名和密码
+cp .env.example .env
 
 # 安装依赖
 npm install
 
-# 配置环境变量
-cp .env.example .env
-# 编辑.env文件，设置用户名和密码
-```
-
-#### 开发与构建
-```bash
 # 开发模式启动
 npm run dev
 
 # 构建生产版本
 npm run build
-
-# 预览构建版本
-npm run preview
 ```
 
 ### 核心API说明
