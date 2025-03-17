@@ -3,6 +3,7 @@ import MainLayout from '../components/layouts/MainLayout.vue';
 import ChartContainer from '../components/layouts/ChartContainer.vue';
 import ChartPlaceholder from '../components/charts/ChartPlaceholder.vue';
 import ScrollingSensorList from '../components/charts/ScrollingSensorList.vue';
+import ScrollingLogList from '../components/charts/ScrollingLogList.vue';
 import UnityContainer from '../components/display/UnityContainer.vue';
 import ControlButtons from '../components/controls/ControlButtons.vue';
 import ResourcesPanel from '../components/display/ResourcesPanel.vue';
@@ -24,7 +25,7 @@ import EventResponseRadarChart from '../components/charts/EventResponseRadarChar
       </ChartContainer>
 
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-three" />
+        <ScrollingLogList />
       </ChartContainer>
     </template>
     
