@@ -30,7 +30,7 @@ const close = () => {
           <div class="interface-window">
             <iframe
               src="https://share.fastgpt.in/chat/share?shareId=czky0t6cloyw6l5ck80pnbgq"
-              style="width: 100%; height: 98%;"
+              style="width: 100%; height: 95%;"
               frameborder="0" 
               allow="*"
             ></iframe>
@@ -67,7 +67,7 @@ const close = () => {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 100;
   overflow: hidden;
-  padding: 40px 20px 20px;
+  padding: 40px 10px 10px;
 }
 
 /* 人机接口浮窗的特定样式 */
@@ -99,7 +99,7 @@ const close = () => {
 
 /* 特别为iframe设置高度 */
 .interface-window {
-  height: 600px;
+  height: 550px;
   min-height: 450px;
 }
 
