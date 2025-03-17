@@ -10,15 +10,15 @@
  * 5. 提供Unity通信测试按钮
  */
 import { ref, onMounted, onUnmounted } from 'vue';
-import UnityService from '../../services/UnityService';
+// import UnityService from '../../services/UnityService';
 
 // 时间显示逻辑
 const currentTime = ref(new Date().toLocaleTimeString());
 
-// Unity事件回调处理函数
-const handleUnityMessage = (data: any) => {
-  alert(`收到Unity消息: ${data.detail}`);
-};
+// // Unity事件回调处理函数
+// const handleUnityMessage = (data: any) => {
+//   alert(`收到Unity消息: ${data.detail}`);
+// };
 
 onMounted(() => {
   // 设置时间更新
@@ -27,19 +27,19 @@ onMounted(() => {
   }, 1000);
   
   // 添加Unity消息监听
-  UnityService.addUnityEventListener('frontend_unity', handleUnityMessage);
+  // UnityService.addUnityEventListener('frontend_unity', handleUnityMessage);
 });
 
 onUnmounted(() => {
   // 移除Unity消息监听
-  UnityService.removeUnityEventListener('frontend_unity', handleUnityMessage);
+  // UnityService.removeUnityEventListener('frontend_unity', handleUnityMessage);
 });
 
-// 发送消息到Unity
-const sendTimeToUnity = () => {
-  const currentDateTime = new Date().toLocaleString();
-  UnityService.sendMessageToUnity('MessageTest', 'frontend2unity', currentDateTime);
-};
+// // 发送消息到Unity
+// const sendTimeToUnity = () => {
+//   const currentDateTime = new Date().toLocaleString();
+//   UnityService.sendMessageToUnity('MessageTest', 'frontend2unity', currentDateTime);
+// };
 </script>
 
 <template>
@@ -48,13 +48,13 @@ const sendTimeToUnity = () => {
       <span class="logo-text">安全风险智能预警决策</span>
     </div>
     <div class="header-right">
-      <button 
+      <!-- <button 
         @click="sendTimeToUnity" 
         class="unity-test-btn"
         title="发送当前时间到Unity"
       >
         Unity测试
-      </button>
+      </button> -->
       <span class="time">{{ currentTime }}</span>
     </div>
   </header>
