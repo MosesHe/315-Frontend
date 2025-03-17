@@ -65,6 +65,32 @@ const currentTitle = computed(() => {
   return resourceTitles[type];
 });
 
+// 控制标签显示的计算属性
+const labelConfig = computed(() => {
+  return {
+    show: isExpanded.value,
+    position: 'outside' as const,
+    formatter: '{b}: {c} ({d}%)',
+    fontSize: 12
+  };
+});
+
+// 控制标签连接线显示的计算属性
+const labelLineConfig = computed(() => {
+  return {
+    show: isExpanded.value
+  };
+});
+
+// 控制强调状态下标签显示的计算属性
+const emphasisLabelConfig = computed(() => {
+  return {
+    show: isExpanded.value,
+    fontSize: 14,
+    fontWeight: 'bold' as const
+  };
+});
+
 // 添加全局样式
 const addGlobalStyle = () => {
   const styleElement = document.createElement('style');
@@ -151,18 +177,12 @@ const updateChart = () => {
           borderColor: '#fff',
           borderWidth: 2
         },
-        label: {
-          show: false
-        },
+        label: labelConfig.value,
         emphasis: {
           focus: 'series',
-          label: {
-            show: false
-          }
+          label: emphasisLabelConfig.value
         },
-        labelLine: {
-          show: false
-        },
+        labelLine: labelLineConfig.value,
         data: currentData.value
       }
     ]
@@ -196,6 +216,7 @@ watch(isExpanded, () => {
       const chart = chartInstance;
       if (chart) {
         chart.resize();
+        updateChart();
       }
     }, 300);
   }
