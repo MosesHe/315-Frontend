@@ -10,6 +10,7 @@ import ResourcesPanel from '../components/display/ResourcesPanel.vue';
 import ResourceAllocationChart from '../components/charts/ResourceAllocationChart.vue';
 import StaffDistributionChart from '../components/charts/StaffDistributionChart.vue';
 import EventResponseRadarChart from '../components/charts/EventResponseRadarChart.vue';
+import ChemicalKnowledgeGraph from '../components/charts/ChemicalKnowledgeGraph.vue';
 </script>
 
 <template>
@@ -21,7 +22,7 @@ import EventResponseRadarChart from '../components/charts/EventResponseRadarChar
       </ChartContainer>
       
       <ChartContainer>
-        <ChartPlaceholder chartClass="chart-two" />
+        <ChemicalKnowledgeGraph />
       </ChartContainer>
 
       <ChartContainer>
